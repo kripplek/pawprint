@@ -2,12 +2,13 @@
 
 abstract class baseController
 {
+    private $method;
     public $view;
     private $actionName;
     public $user;
     public function __construct(){
         $this->view = new stdClass();
-        
+        $this->method = $_SERVER['REQUEST_METHOD'];
     }
     public function getPostVar($var){
         return (isset($_POST[$var]) )? $_POST[$var] : false;
@@ -26,10 +27,10 @@ abstract class baseController
         if(is_array($uri)){
             $place = array_search($param,$uri);
             return $uri[$place+1];
-        }        
+        }
     }
     public function isPost(){
-        if((strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') ){
+        if( $this->getRequestMethod() == 'POST') {
             return true;
         }
         return false;
@@ -40,6 +41,9 @@ abstract class baseController
     public function redirect($uri){
         $_SESSION['redirect']= $uri;
     }
-        
+    public function getRequestMethod(){
+        return $this->method;
+    }
+
 
 }

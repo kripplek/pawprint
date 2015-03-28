@@ -13,9 +13,9 @@
           <!-- If the main navigation has sub navigation, then add the class "has_submenu" to "li" of main navigation. -->
           <ul class="navi">
 
-            <!-- Use the class nred, ngreen, nblue, nlightblue, nviolet, stanleyyellow, stanleygrey or norange to add background color. You need to use this in <li> tag. -->
+            <!-- Use the class nred, ngreen, nblue, nlightblue, nviolet, yellow, grey or norange to add background color. You need to use this in <li> tag. -->
 
-            <li class="stanleygrey "><a href="/home/"><i class="icon-desktop"></i> Dashboard</a></li>
+            <li class="begrey "><a href="/home/"><i class="icon-desktop"></i> Dashboard</a></li>
 
         <?php
         //get the nav bar from the template file
@@ -24,10 +24,10 @@
         foreach($nav as $item =>$parts):?>
         <?php
             $extraClass= (in_array($this->uriPath,$parts))?'open':'';
-                
+
         ?>
             <!-- Menu with sub menu -->
-            <li class="has_submenu stanleyyellow <?php echo $extraClass?>">
+            <li class="has_submenu yellow <?php echo $extraClass?>">
               <a href="#">
                 <!-- Menu name with icon -->
                 <i class="icon-th"></i><?php echo $item?>

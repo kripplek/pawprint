@@ -9,7 +9,6 @@ abstract class pawPrintBase
 {
     protected $method = '';
     protected $endpoint = '';
-    protected $ajaxMode = false;
     protected $args = array();
     protected $file = Null;
 
@@ -30,13 +29,13 @@ abstract class pawPrintBase
         $this->endpoint = $this->_sanitize( ( !isset($this->args[1]) || is_null($this->args[1]) )?'home':$this->args[1] );
         $this->action =$this->_sanitize( ( !isset($this->args[2]) || is_null($this->args[0]))?'index':$this->args[2] );
         $this->query=$_GET;
-        $this->method = $_SERVER['REQUEST_METHOD'];
         $this->file = file_get_contents("php://input");
 
     }
 
     public function processRequest() {
         //default to home
+        //one final sanitizaion. don't allow base routing.
         if($this->endpoint == 'base' || $this->action == 'base' ){
             $this->endpoint = "home";
             $this->action = 'index';

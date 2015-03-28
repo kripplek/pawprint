@@ -20,5 +20,8 @@ class usersController extends baseController
     public function newAction(){
         $this->view->subtitle = "Create a New User";
 
+        if($this->isPost()){
+            //save and stuff
+        }
     }
 }

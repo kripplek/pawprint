@@ -21,22 +21,13 @@ function __autoload($class_name) {
        }
 }
 
-#propel
-require_once('../src/propel.php');
-
-#functional
-require '../src/endpoints.class.php';
-#template
-require '../src/template.php';
-
 #sandbox
 if (!array_key_exists('HTTP_ORIGIN', $_SERVER)) {
         $_SERVER['HTTP_ORIGIN'] = $_SERVER['SERVER_NAME'];
 }
 
 try {
-
-        $paw= new pawPrintMain();
+        $paw= new pawPrint();
              return $paw->processRequest();
 
 } catch (Exception $e) {

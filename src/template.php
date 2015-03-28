@@ -35,6 +35,7 @@ class Template
                 $this->ajaxMode = true;
         }
 
+
     }
     public function getUriAsArray(){
 
@@ -52,11 +53,11 @@ class Template
         if($this->ajaxMode){
             return $this->ajaxRender();
         }
-        $this->renderHeader();
-        $this->includeScripts();
-        $this->renderNavbar();
-        $this->renderBreadcrumb();
-        $this->showMess();
+        $this->renderHeader()
+             ->includeScripts()
+             ->renderNavbar()
+             ->renderBreadcrumb()
+             ->showMess();
         //throw the view in.
         include($viewPath);
         $this->renderFooter();
@@ -68,12 +69,15 @@ class Template
     }
     public function renderHeader(){
         include($this->docRoot.'/html/template/topbar.php');
+        return $this;
     }
     public function renderNavbar(){
         include($this->docRoot.'/html/template/navigation.php');
+        return $this;
     }
     public function renderFooter(){
         include($this->docRoot.'/html/template/footer.php');
+        return $this;
     }
     public function showMess(){
         if( isset($_SESSION['messages'][0] )&& is_array($_SESSION['messages'][0]) ){
@@ -82,9 +86,11 @@ class Template
             }
         $_SESSION['messages']=array();
         }
+        return $this;
     }
     public function includeScripts(){
         include($this->docRoot.'/html/template/scripts.php');
+        return $this;
     }
     public function renderBreadcrumb(){
         if(!isset($this->pageName) || $this->pageName ==''){
@@ -95,6 +101,7 @@ class Template
         }
 
         include($this->docRoot.'/html/template/breadcrumb.php');
+        return $this;
     }
     public function getNavBar(){
         include($this->docRoot.'/config/navigation.php');

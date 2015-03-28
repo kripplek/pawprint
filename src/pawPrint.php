@@ -1,6 +1,6 @@
 <?php
 require_once 'Api.class.php';
-class pawPrintMain extends pawPrintBase
+class pawPrint extends pawPrintBase
 {
     protected $user;
 
